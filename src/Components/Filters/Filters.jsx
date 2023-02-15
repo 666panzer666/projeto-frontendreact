@@ -1,21 +1,42 @@
 import { FilterContainer } from "./styled"
 
-function Filters() {
+function Filters(props) {
+    const { minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter } = props;
+
+    function changeMinFilter(e) {
+        if (e.target.value < 0) {
+            e.target.value = 0;
+        }
+        setMinFilter(e.target.value);
+    }
+
+    function changeMaxFilter(e) {
+        if (e.target.value < 0) {
+            setMaxFilter(0);
+            return
+        } 
+        setMaxFilter(e.target.value);
+    }
+
+    function changeSearchFilter(e) {
+        setSearchFilter(e.target.value);
+    }
+
     return (
         <>
             <FilterContainer>
                 <h2>Filtros</h2>
                 <div className="row">
                     <label>Valor Mínimo: </label>
-                    <input type="number" />
+                    <input type="number" value={minFilter} onChange={changeMinFilter}/>
                 </div>
                 <div className="row">
                     <label>Valor Máximo: </label>
-                    <input type="number" />
+                    <input type="number" value={maxFilter} onChange={changeMaxFilter}/>
                 </div>
                 <div className="row">
                     <label>Busca por nome: </label>
-                    <input type="text" />
+                    <input type="text" value={searchFilter} onChange={changeSearchFilter}/>
                 </div>
             </FilterContainer>
         </>

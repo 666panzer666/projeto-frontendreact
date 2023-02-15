@@ -1,6 +1,6 @@
 import { Container } from "./styled"
 
-function Cart() {
+function Cart({ amount, setAmount, cart, setCart }) {
     return (
         <><Container>
 
