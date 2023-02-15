@@ -1,15 +1,26 @@
+import { useState } from "react";
 import ProductCard from "../ProductCard/ProdutcCard";
 import { Container, Order, ItemsContainer } from "./styled";
 
 function Home( { products }) {
-    console.log(products);
+    
+    const [ordination, setOrdination] = useState("Crescente")
+
+    function changeOrdination(e) {
+        if (e.target.value === "Crescente") {
+            setOrdination("Crescente");
+        } else {
+            setOrdination("Decrescente");
+        }
+    }
+    console.log(ordination)
     return (
         <>
             <Container>
                 <Order>
                     <span>Quantidade de produtos: {products.length}</span>
                     <span>Ordenação:
-                        <select>
+                        <select value={ordination} onChange={changeOrdination}>
                             <option value="Crescente">Crescente</option>
                             <option value="Decrescente">Decrescente</option>
                         </select>
