@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProductCard from "../ProductCard/ProdutcCard";
 import { Container, Order, ItemsContainer } from "./styled";
 
-function Home( { products }) {
+function Home( { products, amount, setAmount, cart, setCart }) {
     
     const [ordination, setOrdination] = useState("Crescente")
 
@@ -13,7 +13,7 @@ function Home( { products }) {
             setOrdination("Decrescente");
         }
     }
-    console.log(ordination)
+
     return (
         <>
             <Container>
@@ -27,7 +27,7 @@ function Home( { products }) {
                     </span>
                 </Order>
                 <ItemsContainer>
-                    <ProductCard products={products}/>
+                    <ProductCard products={products} amount={amount} setAmount={setAmount} cart={cart} setCart={setCart}/>
                 </ItemsContainer>
             </Container>
         </>

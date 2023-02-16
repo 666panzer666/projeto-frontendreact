@@ -27,16 +27,16 @@ function Filters(props) {
             <FilterContainer>
                 <h2>Filtros</h2>
                 <div className="row">
-                    <label>Valor Mínimo: </label>
-                    <input type="number" value={minFilter} onChange={changeMinFilter}/>
+                    <label htmlFor="min" >Valor Mínimo: </label>
+                    <input id="min" type="number" value={minFilter} onChange={changeMinFilter}/>
                 </div>
                 <div className="row">
-                    <label>Valor Máximo: </label>
-                    <input type="number" value={maxFilter} onChange={changeMaxFilter}/>
+                    <label htmlFor="max">Valor Máximo: </label>
+                    <input id="max" type="number" value={maxFilter} onChange={changeMaxFilter}/>
                 </div>
                 <div className="row">
-                    <label>Busca por nome: </label>
-                    <input type="text" value={searchFilter} onChange={changeSearchFilter}/>
+                    <label htmlFor="search">Busca por nome: </label>
+                    <input id="search" type="text" value={searchFilter} onChange={changeSearchFilter}/>
                 </div>
             </FilterContainer>
         </>
