@@ -4,7 +4,7 @@ import { Container } from "./styled"
 function Cart({ amount, setAmount, cart, setCart }) {
     return (
         <><Container>
-            <Items amount={amount}  cart={cart} />
+            <Items amount={amount}  cart={cart} setCart={setCart} setAmount={setAmount} />
         </Container>
         </>
     )
