@@ -2,17 +2,11 @@ import { useState } from "react";
 import ProductCard from "../ProductCard/ProdutcCard";
 import { Container, Order, ItemsContainer } from "./styled";
 
-function Home( { products, amount, setAmount, cart, setCart }) {
-    
-    const [ordination, setOrdination] = useState("Crescente")
+function Home( { products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter }) {
 
-    function changeOrdination(e) {
-        if (e.target.value === "Crescente") {
-            setOrdination("Crescente");
-        } else {
-            setOrdination("Decrescente");
-        }
-    }
+    function handleOrdination(e) {
+        setOrdination(e.target.value);
+    };
 
     return (
         <>
@@ -20,14 +14,14 @@ function Home( { products, amount, setAmount, cart, setCart }) {
                 <Order>
                     <span>Quantidade de produtos: {products.length}</span>
                     <span>Ordenação:
-                        <select value={ordination} onChange={changeOrdination}>
+                        <select onChange={handleOrdination} value={ordination}>
                             <option value="Crescente">Crescente</option>
                             <option value="Decrescente">Decrescente</option>
                         </select>
                     </span>
                 </Order>
                 <ItemsContainer>
-                    <ProductCard products={products} amount={amount} setAmount={setAmount} cart={cart} setCart={setCart}/>
+                    <ProductCard products={products} amount={amount} setAmount={setAmount} cart={cart} setCart={setCart} ordination={ordination} minFilter={minFilter} maxFilter={maxFilter} searchFilter={searchFilter}/>
                 </ItemsContainer>
             </Container>
         </>
