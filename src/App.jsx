@@ -21,6 +21,7 @@ function App() {
   const [searchFilter, setSearchFilter] = useState("");
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState("");
+  const [ordination, setOrdination] = useState("Crescente")
 
 
 
@@ -37,6 +38,8 @@ function App() {
           products={products}
           amount={amount} setAmount={setAmount}
           cart={cart} setCart={setCart}
+          ordination={ordination} setOrdination={setOrdination}
+          minFilter={minFilter} maxFilter={maxFilter} searchFilter={searchFilter}
         />
         <Cart
           amount={amount} setAmount={setAmount}

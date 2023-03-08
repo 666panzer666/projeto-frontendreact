@@ -3,23 +3,29 @@ import { FilterContainer } from "./styled"
 function Filters(props) {
     const { minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter } = props;
 
-    function changeMinFilter(e) {
+    function handleMinFilter(e) {
         if (e.target.value < 0) {
             e.target.value = 0;
         }
         setMinFilter(e.target.value);
     }
 
-    function changeMaxFilter(e) {
+    function handleMaxFilter(e) {
         if (e.target.value < 0) {
             setMaxFilter(0);
             return
-        } 
+        }
         setMaxFilter(e.target.value);
     }
 
-    function changeSearchFilter(e) {
+    function handleSearchFilter(e) {
         setSearchFilter(e.target.value);
+    }
+
+    function handleClearSearchFilter() {
+        setSearchFilter("");
+        setMaxFilter("");
+        setMinFilter("");
     }
 
     return (
@@ -28,16 +34,17 @@ function Filters(props) {
                 <h2>Filtros</h2>
                 <div className="row">
                     <label htmlFor="min" >Valor Mínimo: </label>
-                    <input id="min" type="number" value={minFilter} onChange={changeMinFilter}/>
+                    <input id="min" type="number" value={minFilter} onChange={handleMinFilter} />
                 </div>
                 <div className="row">
                     <label htmlFor="max">Valor Máximo: </label>
-                    <input id="max" type="number" value={maxFilter} onChange={changeMaxFilter}/>
+                    <input id="max" type="number" value={maxFilter} onChange={handleMaxFilter} />
                 </div>
                 <div className="row">
                     <label htmlFor="search">Busca por nome: </label>
-                    <input id="search" type="text" value={searchFilter} onChange={changeSearchFilter}/>
+                    <input id="search" type="text" value={searchFilter} onChange={handleSearchFilter} />
                 </div>
+                <button onClick={handleClearSearchFilter}>Limpar Filtros</button>
             </FilterContainer>
         </>
     )
