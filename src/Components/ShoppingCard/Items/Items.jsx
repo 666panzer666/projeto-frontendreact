@@ -1,9 +1,14 @@
 function Items({ amount, setAmount, cart, setCart }) {
 
     function removeItem(item){
-        const newCart = cart;
+        let newCart = cart;
         let newAmount = amount;
-        newCart.filter(i => i === item)[0].quantity --;
+        if (newCart.filter(i => i === item)[0].quantity === 1){
+            newCart = cart.filter(i => i !== item)
+            
+        } else {
+            newCart.filter(i => i === item)[0].quantity --;
+        }
         newAmount -= item.price;
         setCart(newCart);
         setAmount(newAmount);
@@ -20,7 +25,7 @@ function Items({ amount, setAmount, cart, setCart }) {
                 </p>) : (<></>)
             ))}
 
-            {amount > 0 ? (<>
+            {amount > 0.009 ? (<>
                 <p>Valor total:</p>
                 <p><b>R${Math.round(amount * 100) / 100}</b></p>
                 </>) : 

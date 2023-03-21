@@ -6,7 +6,7 @@ function ProductCard({ products, amount, setAmount, cart, setCart, ordination, m
         const newItems = cart;
         let totalAmount = amount * 1;
 
-        if (cart.includes(product)) {
+        if (newItems.includes(product)) {
             newItems.filter(i => i === product)[0].quantity++;
             totalAmount += product.price
             setAmount(totalAmount);
@@ -24,11 +24,12 @@ function ProductCard({ products, amount, setAmount, cart, setCart, ordination, m
     return (
         <>
             {products
-                .filter((product) => minFilter ? product.price > minFilter : product
+                .filter((product) => minFilter ? product.price >= minFilter : product
                 )
-                .filter((product) => maxFilter ? product.price < maxFilter : product
+                .filter((product) => maxFilter ? product.price <= maxFilter : product
                 )
-                .filter((product) => searchFilter ? product.title.toLowerCase().includes(searchFilter.toLowerCase()) : product )
+                .filter((product) => searchFilter ? product.title.toLowerCase(maxFilter).includes(searchFilter.toLowerCase()) : product
+                )
                 .sort((a, b) => {
                     if (ordination === "Crescente") {
                         return a.price - b.price;

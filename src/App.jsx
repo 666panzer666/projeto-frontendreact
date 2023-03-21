@@ -3,11 +3,20 @@ import Home from "./Components/ProductList/Home/Home"
 import Cart from "./Components/ShoppingCard/Cart/Cart"
 import styled, { createGlobalStyle } from "styled-components"
 import products from "./assets/productsList"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const GlobalStyle = createGlobalStyle`
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {  background-image: url(../public/bg.svg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 `
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: minmax(250px, 1fr) 3fr minmax(250px, 1fr);
@@ -23,7 +32,18 @@ function App() {
   const [amount, setAmount] = useState("");
   const [ordination, setOrdination] = useState("Crescente")
 
+  useEffect(() => {
+    const cartStorage = JSON.parse(localStorage.getItem("cart"));
+    if (cartStorage) {
+      console.log(cartStorage)
+      setCart(cartStorage);
+    }
+  }, []);
 
+  useEffect(() => {
+    const cartStorage = JSON.stringify(cart)
+    localStorage.setItem("cart", cartStorage)
+  }, [cart]);
 
   return (
     <>
