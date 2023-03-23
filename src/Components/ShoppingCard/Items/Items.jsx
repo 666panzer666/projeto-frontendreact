@@ -24,16 +24,16 @@ function Items({ amount, setAmount, cart, setCart }) {
         setAmount(newAmount);
     }
 
-    useEffect(() => {
-        const cartString = localStorage.getItem("cart") || [];
-        const cart = JSON.parse(cartString);
-        setCart(cart);
-    }, []);
+    // useEffect(() => {
+    //     const cartString = localStorage.getItem("cart") || [];
+    //     const cart = JSON.parse(cartString);
+    //     setCart(cart);
+    // }, []);
 
-    useEffect(() => {
-        const cartString = JSON.stringify(cart);
-        localStorage.setItem("cart", cartString);
-    }, [cartRender]);
+    // useEffect(() => {
+    //     const cartString = JSON.stringify(cart);
+    //     localStorage.setItem("cart", cartString);
+    // }, [cartRender]);
 
     return (
         <>
