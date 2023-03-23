@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ProductCard from "../ProductCard/ProdutcCard";
 import { Container, Order, ItemsContainer } from "./styled";
 
