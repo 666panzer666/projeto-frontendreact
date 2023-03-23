@@ -41,7 +41,7 @@ function ProductCard({ products, amount, setAmount, cart, setCart, ordination, m
                     <OrderItem key={product.id}>
                         <img src={product.image} alt={product.name} />
                         <p>{product.title}</p>
-                        <p>R$ {product.price}</p>
+                        <p>R$ {product.price.toFixed(2)}</p>
                         <button onClick={() => addCart(product)}>Adicionar ao carrinho</button>
                     </OrderItem>
                 ))}

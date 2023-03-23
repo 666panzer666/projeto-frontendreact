@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   box-sizing: border-box;
 }
-body {  background-image: url(../public/bg.svg);
+body {  background-image: url(./bg.svg);
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,19 +31,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState("");
   const [ordination, setOrdination] = useState("Crescente")
-
-  useEffect(() => {
-    const cartStorage = JSON.parse(localStorage.getItem("cart"));
-    if (cartStorage) {
-      console.log(cartStorage)
-      setCart(cartStorage);
-    }
-  }, []);
-
-  useEffect(() => {
-    const cartStorage = JSON.stringify(cart)
-    localStorage.setItem("cart", cartStorage)
-  }, [cart]);
 
   return (
     <>
