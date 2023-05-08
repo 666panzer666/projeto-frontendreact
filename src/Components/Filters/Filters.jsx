@@ -1,4 +1,5 @@
-import { FilterContainer } from "./styled"
+import { FilterContainer } from './styled';
+import React from 'react';
 
 function Filters(props) {
     const { minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter } = props;
@@ -13,7 +14,7 @@ function Filters(props) {
     function handleMaxFilter(e) {
         if (e.target.value < 0) {
             setMaxFilter(0);
-            return
+            return;
         }
         setMaxFilter(e.target.value);
     }
@@ -23,9 +24,9 @@ function Filters(props) {
     }
 
     function handleClearSearchFilter() {
-        setSearchFilter("");
-        setMaxFilter("");
-        setMinFilter("");
+        setSearchFilter('');
+        setMaxFilter('');
+        setMinFilter('');
     }
 
     return (
@@ -47,7 +48,7 @@ function Filters(props) {
                 <button onClick={handleClearSearchFilter}>Limpar Filtros</button>
             </FilterContainer>
         </>
-    )
+    );
 }
 
-export default Filters
+export default Filters;
