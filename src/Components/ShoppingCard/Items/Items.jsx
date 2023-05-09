@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React from 'react';
 
 function Items({ amount, setAmount, cart, setCart }) {
 
@@ -14,7 +14,7 @@ function Items({ amount, setAmount, cart, setCart }) {
         let newCart = cart;
         let newAmount = amount;
         if (newCart.filter(i => i === item)[0].quantity === 1) {
-            newCart = cart.filter(i => i !== item)
+            newCart = cart.filter(i => i !== item);
 
         } else {
             newCart.filter(i => i === item)[0].quantity--;
@@ -23,17 +23,6 @@ function Items({ amount, setAmount, cart, setCart }) {
         setCart(newCart);
         setAmount(newAmount);
     }
-
-    // useEffect(() => {
-    //     const cartString = localStorage.getItem("cart") || [];
-    //     const cart = JSON.parse(cartString);
-    //     setCart(cart);
-    // }, []);
-
-    // useEffect(() => {
-    //     const cartString = JSON.stringify(cart);
-    //     localStorage.setItem("cart", cartString);
-    // }, [cartRender]);
 
     return (
         <>
@@ -48,7 +37,7 @@ function Items({ amount, setAmount, cart, setCart }) {
                 (<></>)
             }
         </>
-    )
+    );
 }
 
-export default Items
+export default Items;
