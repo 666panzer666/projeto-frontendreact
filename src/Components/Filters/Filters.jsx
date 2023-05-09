@@ -1,8 +1,12 @@
-import { FilterContainer } from './styled';
+import { FilterContainer, FilterTitle } from './styled';
 import React from 'react';
+import { FcFilledFilter, FcClearFilters } from 'react-icons/fc';
+import { useContext } from 'react';
+import GlobalContext from '../../contexts/GlobalContext';
 
-function Filters(props) {
-    const { minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter } = props;
+function Filters() {
+    
+    const { minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter } = useContext(GlobalContext);
 
     function handleMinFilter(e) {
         if (e.target.value < 0) {
@@ -30,9 +34,12 @@ function Filters(props) {
     }
 
     return (
-        <>
+        <div>
+            <FilterTitle>
+                <FcFilledFilter />
+                <div>Filtrar por:</div>
+            </FilterTitle>
             <FilterContainer>
-                <h2>Filtros</h2>
                 <div className="row">
                     <label htmlFor="min" >Valor Mínimo: </label>
                     <input id="min" type="number" value={minFilter} onChange={handleMinFilter} />
@@ -42,12 +49,15 @@ function Filters(props) {
                     <input id="max" type="number" value={maxFilter} onChange={handleMaxFilter} />
                 </div>
                 <div className="row">
-                    <label htmlFor="search">Busca por nome: </label>
+                    <label htmlFor="search">Palavras: </label>
                     <input id="search" type="text" value={searchFilter} onChange={handleSearchFilter} />
                 </div>
-                <button onClick={handleClearSearchFilter}>Limpar Filtros</button>
+                <button onClick={handleClearSearchFilter}>
+                    <FcClearFilters />
+                    <span>Limpar Filtros</span>
+                </button>
             </FilterContainer>
-        </>
+        </div>
     );
 }
 

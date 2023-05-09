@@ -1,11 +1,17 @@
-import ProductCard from "../ProductCard/ProdutcCard";
-import { Container, Order, ItemsContainer } from "./styled";
+import { useContext } from 'react';
+import ProductCard from '../ProductCard/ProdutcCard';
+import { Container, Order, ItemsContainer } from './styled';
+import React from 'react';
+import GlobalContext from '../../../contexts/GlobalContext';
 
-function Home( { products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter }) {
+
+function Home() {
+
+    const {products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter} = useContext(GlobalContext);
 
     function handleOrdination(e) {
         setOrdination(e.target.value);
-    };
+    }
 
     return (
         <>
@@ -24,7 +30,7 @@ function Home( { products, amount, setAmount, cart, setCart, ordination, setOrdi
                 </ItemsContainer>
             </Container>
         </>
-    )
+    );
 }
 
 export default Home;

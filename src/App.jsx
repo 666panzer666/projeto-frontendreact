@@ -1,10 +1,9 @@
 import Filters from './Components/Filters/Filters';
 import Home from './Components/ProductList/Home/Home';
-import Cart from './Components/ShoppingCard/Cart/Cart';
 import styled, { createGlobalStyle } from 'styled-components';
-import products from './assets/productsList';
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './Components/Header/Header';
+import GlobalState from './contexts/GlobalState';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -14,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
-body {  background-image: url(./bg.svg);
+body {  
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,42 +21,25 @@ body {  background-image: url(./bg.svg);
 }
 `;
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: minmax(250px, 1fr) 3fr minmax(250px, 1fr);
-  align-content: flex-start;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  padding-top: 75px;
+  max-width: 1100px;
+  margin: 0 auto;
 `;
 
 function App() {
 
-    const [minFilter, setMinFilter] = useState('');
-    const [maxFilter, setMaxFilter] = useState('');
-    const [searchFilter, setSearchFilter] = useState('');
-    const [cart, setCart] = useState([]);
-    const [amount, setAmount] = useState('');
-    const [ordination, setOrdination] = useState('Crescente');
-
     return (
         <>
             <GlobalStyle />
-            <Header />
-            <Container>
-                <Filters
-                    minFilter={minFilter} setMinFilter={setMinFilter}
-                    maxFilter={maxFilter} setMaxFilter={setMaxFilter}
-                    searchFilter={searchFilter} setSearchFilter={setSearchFilter}
-                />
-                <Home
-                    products={products}
-                    amount={amount} setAmount={setAmount}
-                    cart={cart} setCart={setCart}
-                    ordination={ordination} setOrdination={setOrdination}
-                    minFilter={minFilter} maxFilter={maxFilter} searchFilter={searchFilter}
-                />
-                <Cart
-                    amount={amount} setAmount={setAmount}
-                    cart={cart} setCart={setCart}
-                />
-            </Container>
+            <GlobalState >
+                <Header />
+                <Container>
+                    <Filters />
+                    <Home />
+                </Container>
+            </GlobalState>
 
         </>
     );

@@ -1,4 +1,9 @@
-import { OrderItem } from './styled'
+import { OrderItem, Price, Name } from './styled';
+import React from 'react';
+import { BsFillCartPlusFill } from 'react-icons/bs';
+import formatCurrency from '../../../util/formatCurrency';
+
+
 
 function ProductCard({ products, amount, setAmount, cart, setCart, ordination, minFilter, maxFilter, searchFilter }) {
 
@@ -8,17 +13,17 @@ function ProductCard({ products, amount, setAmount, cart, setCart, ordination, m
 
         if (newItems.includes(product)) {
             newItems.filter(i => i === product)[0].quantity++;
-            totalAmount += product.price
+            totalAmount += product.price;
             setAmount(totalAmount);
             setCart(newItems);
         } else {
             product.quantity = 1;
             newItems.push(product);
-            totalAmount += product.price
+            totalAmount += product.price;
             setAmount(totalAmount);
             setCart(newItems);
         }
-    };
+    }
 
 
     return (
@@ -31,22 +36,24 @@ function ProductCard({ products, amount, setAmount, cart, setCart, ordination, m
                 .filter((product) => searchFilter ? product.title.toLowerCase(maxFilter).includes(searchFilter.toLowerCase()) : product
                 )
                 .sort((a, b) => {
-                    if (ordination === "Crescente") {
+                    if (ordination === 'Crescente') {
                         return a.price - b.price;
-                    } else if (ordination === "Decrescente") {
+                    } else if (ordination === 'Decrescente') {
                         return b.price - a.price;
                     }
                 })
                 .map(product => (
                     <OrderItem key={product.id}>
                         <img src={product.image} alt={product.name} />
-                        <p>{product.title}</p>
-                        <p>R$ {product.price.toFixed(2)}</p>
-                        <button onClick={() => addCart(product)}>Adicionar ao carrinho</button>
+                        <Price>{formatCurrency(product.price)}</Price>
+                        <Name>{product.title}</Name>
+                        <button onClick={() => addCart(product)}>
+                            <BsFillCartPlusFill />
+                        </button>
                     </OrderItem>
                 ))}
         </>
-    )
+    );
 }
 
 export default ProductCard;

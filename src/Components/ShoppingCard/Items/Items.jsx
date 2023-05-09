@@ -1,13 +1,17 @@
 import React from 'react';
+import { Title, CartItems, Total, Container } from './styled';
+import { BsCartX } from 'react-icons/bs';
+import formatCurrency from '../../../util/formatCurrency';
 
 function Items({ amount, setAmount, cart, setCart }) {
 
     const cartRender = cart.map(product => (
         product.quantity > 0 ? (
-            <p key={product.id}>{product.quantity} x {product.title} -
-                <b> R${Math.round(product.price * product.quantity * 100) / 100}</b>
-                <button onClick={() => removeItem(product)}>Remover</button>
-            </p>) : (<></>)
+            <CartItems key={product.id}>
+                <p>{product.quantity} x {product.title}</p>
+                <b> {formatCurrency(product.price * product.quantity)}</b>
+                <button onClick={() => removeItem(product)}><BsCartX /></button>
+            </CartItems>) : (<></>)
     ));
 
     function removeItem(item) {
@@ -25,18 +29,18 @@ function Items({ amount, setAmount, cart, setCart }) {
     }
 
     return (
-        <>
-            <h2>Carrinho:</h2>
+        <Container>
+            <Title>Carrinho:</Title>
          
             {cartRender}
 
-            {amount > 0.009 ? (<>
+            {amount > 0.009 ? (<Total>
                 <p>Valor total:</p>
-                <p><b>R${Math.round(amount * 100) / 100}</b></p>
-            </>) :
+                <p><b>{formatCurrency(amount)}</b></p>
+            </Total>) :
                 (<></>)
             }
-        </>
+        </Container>
     );
 }
 

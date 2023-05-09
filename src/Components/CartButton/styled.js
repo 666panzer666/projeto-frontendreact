@@ -11,8 +11,10 @@ export const Button = styled.button `
  cursor: pointer;
  position: relative;
  margin-left: 20px;
- color: #333;
-span {
+ color: #BDC7D2;
+`;
+
+export const Quantity = styled.span `
   background-color: red;
   width: 15px;
   height: 15px;
@@ -26,5 +28,4 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 `;
