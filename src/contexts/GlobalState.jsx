@@ -12,7 +12,12 @@ function GlobalState(props) {
     const [cart, setCart] = useState([]);
     const [amount, setAmount] = useState('');
     const [ordination, setOrdination] = useState('Crescente');
-    const [ displayCart, setDisplayCart ] = useState(false);
+    const [ modalCart, setModalCart ] = useState(false);
+
+    // useEffect(() => {
+    //     localStorage.setItem('cart', JSON.stringify(cart));
+    //     localStorage.setItem('amount', JSON.stringify(amount));
+    // }, [amount]);
 
     const data = {
         minFilter,
@@ -28,8 +33,8 @@ function GlobalState(props) {
         ordination,
         setOrdination,
         products,
-        displayCart,
-        setDisplayCart
+        modalCart,
+        setModalCart,
     };
     return (
         <>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;
-  display: flex;
+  display: ${({displayCart}) => displayCart ? 'flex' : 'none'};
   flex-direction: column;
   align-items: flex-start;
   padding: 5px;
@@ -15,10 +15,24 @@ export const Container = styled.div`
   min-width: 400px;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
   cursor: auto;
+  z-index: 5;
   &>svg {
     position: absolute;
     right: 5px;
     top: 5px;
     cursor: pointer;
   }
+  
   `;
+
+export const Vazio = styled.div`
+  color: black;
+  align-self: center;
+  padding: 30px 0 ;
+  &>svg {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+  }
+`;

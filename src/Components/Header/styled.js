@@ -8,7 +8,9 @@ export const HeaderStyled = styled.header `
 `;
 
 export const Logo = styled.img `
-
+ &:hover {
+  cursor: pointer;
+ }
 `;
 
 export const Container = styled.div `
