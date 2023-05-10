@@ -11,7 +11,15 @@ export const Order = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    align-items: center;
+  svg {
+    color: #c7560e;
+    font-size: 1.2rem;
+  }
+  span {
+    display: flex;
+    gap: 2px;
+  }
     `;
 
 export const ItemsContainer = styled.div`

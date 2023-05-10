@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button `
+export const Button = styled.div `
  font-size: 1.5rem;
  display: flex;
  align-items: center;

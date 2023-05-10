@@ -3,11 +3,12 @@ import ProductCard from '../ProductCard/ProdutcCard';
 import { Container, Order, ItemsContainer } from './styled';
 import React from 'react';
 import GlobalContext from '../../../contexts/GlobalContext';
+import { BiSortAlt2 } from 'react-icons/bi';
 
 
 function Home() {
 
-    const {products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter} = useContext(GlobalContext);
+    const {products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter } = useContext(GlobalContext);
 
     function handleOrdination(e) {
         setOrdination(e.target.value);
@@ -18,7 +19,9 @@ function Home() {
             <Container>
                 <Order>
                     <span>Quantidade de produtos: {products.length}</span>
-                    <span>Ordenação:
+                    <span>
+                        <BiSortAlt2 />
+                        Ordenação:
                         <select onChange={handleOrdination} value={ordination}>
                             <option value="Crescente">Crescente</option>
                             <option value="Decrescente">Decrescente</option>
