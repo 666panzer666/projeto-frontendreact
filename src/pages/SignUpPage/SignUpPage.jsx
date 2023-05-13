@@ -63,7 +63,7 @@ function SignUpPage() {
                             name="password"
                             value={form.password}
                             onChange={onChange}
-            
+                            type={'password'}
                             required
                         />
                     </InputContainer>

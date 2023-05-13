@@ -27,3 +27,11 @@ export const ItemsContainer = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.5rem;
     `;
+
+export const Spinner = styled.div`
+width: 100%;
+padding: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+`;

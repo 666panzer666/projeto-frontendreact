@@ -44,7 +44,7 @@ function ProductCard({ products, amount, setAmount, cart, setCart, ordination, m
                 })
                 .map(product => (
                     <OrderItem key={product.id} onClick={() => addCart(product)}>
-                        <img src={product.image} alt={product.name} />
+                        <img src={product.thumbnail.replace(/\w\.jpg/gi, 'W.jpg')} alt={product.name} />
                         <Price>{formatCurrency(product.price)}</Price>
                         <Name>{product.title}</Name>
                         <button>
