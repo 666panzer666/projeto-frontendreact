@@ -1,17 +1,26 @@
 import { useContext } from 'react';
 import ProductCard from '../ProductCard/ProdutcCard';
-import { Container, Order, ItemsContainer } from './styled';
+import { Container, Order, ItemsContainer, Spinner } from './styled';
 import React from 'react';
 import GlobalContext from '../../../contexts/GlobalContext';
 import { BiSortAlt2 } from 'react-icons/bi';
+import { ClipLoader } from 'react-spinners';
 
 
 function Home() {
 
-    const {products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter } = useContext(GlobalContext);
+    const {products, amount, setAmount, cart, setCart, ordination, setOrdination, minFilter, maxFilter, searchFilter, load } = useContext(GlobalContext);
 
     function handleOrdination(e) {
         setOrdination(e.target.value);
+    }
+
+    function renderItems () {
+        return (
+            <ItemsContainer>
+                <ProductCard products={products} amount={amount} setAmount={setAmount} cart={cart} setCart={setCart} ordination={ordination} minFilter={minFilter} maxFilter={maxFilter} searchFilter={searchFilter}/>
+            </ItemsContainer>
+        );
     }
 
     return (
@@ -28,9 +37,12 @@ function Home() {
                         </select>
                     </span>
                 </Order>
-                <ItemsContainer>
-                    <ProductCard products={products} amount={amount} setAmount={setAmount} cart={cart} setCart={setCart} ordination={ordination} minFilter={minFilter} maxFilter={maxFilter} searchFilter={searchFilter}/>
-                </ItemsContainer>
+                { load && 
+                    <Spinner>
+                        <ClipLoader color="fff" size="88px" />
+                    </Spinner>
+                }
+                { load || renderItems()}
             </Container>
         </>
     );

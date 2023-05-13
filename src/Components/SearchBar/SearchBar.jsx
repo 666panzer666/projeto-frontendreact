@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Form } from './styled';
 import { BsSearch } from 'react-icons/bs';
+import GlobalContext from '../../contexts/GlobalContext';
 
 function SearchBar () {
 
-    const [ searchValue, setSearchValue ] = useState('');
+    const { getAllProducts, search, setSearch } = useContext(GlobalContext);
+
+    function searchProduct (e) {
+        e.preventDefault();
+        setSearch(search);
+        getAllProducts();
+    }
 
     return (
-        <Form preventDefault>
+        <Form  onSubmit={searchProduct}>
             <input 
                 type="search" 
-                value={searchValue}
+                value={search}
                 placeholder="Buscar Produtos" 
-                onChange={({ target }) => setSearchValue(target.value)}
+                onChange={({ target }) => setSearch(target.value)}
                 required 
             />
             <button type="submit">

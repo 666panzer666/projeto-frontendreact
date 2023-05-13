@@ -1,1 +1,1 @@
-export const baseURL = "https://api-cookenu.onrender.com"
+export const baseURL = 'https://api-cookenu.onrender.com';
