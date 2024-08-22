@@ -15,4 +15,4 @@ O usuário deve ser capaz de ordenar os itens em ordem crescente e decrescente, 
 
 ## Acesso a aplicação
 
-Link: [acesse aqui](https://labecommerce.netlify.app/)
+Link: [acesse aqui](https://fashionfusion.netlify.app/)
